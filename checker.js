@@ -9,7 +9,9 @@ function check(url, invocationParameters, expectedResultData, expectedResultStat
         statusTestPassed: null,
         resultDataAsExpected: null
     }
-
+    
+    
+    //COSTRUZIONE URL
     var parameters = '?';
 
     for (var i = 0; i < Object.keys(invocationParameters).length; i++) {
