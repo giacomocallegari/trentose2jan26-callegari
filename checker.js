@@ -24,10 +24,11 @@ function check(url, invocationParameters, expectedResultData, expectedResultStat
 
     url = url.concat(parameters);
 
+    
     //CHIAMATA HTTP GET
     return fetch(url).then((res) => {
-        return res.json().then((res) => {
-            checkResult.resultData = res;
+        return res.json().then((data) => {
+            checkResult.resultData = data;
             checkResult.resultStatus = res.status;
             checkResult.statusTestPassed = compareResults(expectedResultStatus, checkResult.resultStatus);
             checkResult.resultDataAsExpected = compareResults(expectedResultData, checkResult.resultData);
