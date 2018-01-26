@@ -1,7 +1,6 @@
-
 const fetch = require('node-fetch')
 
-function check(url, invocationParameters,  expectedResultData, expectedResultStatus) {
+function check(url, invocationParameters, expectedResultData, expectedResultStatus) {
 
     const checkResult = { // this is the object you need to set and return
         urlChecked: url,
@@ -10,8 +9,8 @@ function check(url, invocationParameters,  expectedResultData, expectedResultSta
         statusTestPassed: null,
         resultDataAsExpected: null
     }
-
-
+    
+    //...
 
 }
 
@@ -22,7 +21,7 @@ function compareResults(expected, actual) {
     if (!expected) return true //always ok if there are no expectations
     if (!actual) return false
     for (let e of Object.keys(expected)) {
-        if (actual[e]===undefined || expected[e]!=actual[e]  ) return false
+        if (actual[e] === undefined || expected[e] != actual[e]) return false
     }
     return true
 }
