@@ -9,20 +9,32 @@ function check(url, invocationParameters, expectedResultData, expectedResultStat
         statusTestPassed: null,
         resultDataAsExpected: null
     }
-    
+
+    var parameters = '?';
+
+    for (var i = 0; i < Object.keys(invocationParameters).length; i++) {
+        if (i > 0) {
+            parameters = parameters.concat('&');
+        }
+
+        var key = Object.keys(invocationParameters)[i];
+        var value = invocationParameters[key];
+        parameters = parameters.concat(key + '=' + value);
+    }
+
+    url = url.concat(parameters);
+
     //CHIAMATA HTTP GET
     return fetch(url).then((res) => {
-        //console.log(res);
-        
-        //var response = {};
-        
-        console.log(checkResult);
-        return checkResult;
+        return res.json().then((res) => {
+            checkResult.resultData = res;
+            checkResult.resultStatus = res.status;
+            checkResult.statusTestPassed = compareResults(expectedResultStatus, checkResult.resultStatus);
+            checkResult.resultDataAsExpected = compareResults(expectedResultData, checkResult.resultData);
+            
+            return checkResult;
+        });
     });
-    
-    //VERIFICA RISPOSTA
-    
-    //RIEMPIMENTO OUTPUT
 
 }
 
