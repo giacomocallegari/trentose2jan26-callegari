@@ -10,7 +10,19 @@ function check(url, invocationParameters, expectedResultData, expectedResultStat
         resultDataAsExpected: null
     }
     
-    //...
+    //CHIAMATA HTTP GET
+    return fetch(url).then((res) => {
+        //console.log(res);
+        
+        //var response = {};
+        
+        console.log(checkResult);
+        return checkResult;
+    });
+    
+    //VERIFICA RISPOSTA
+    
+    //RIEMPIMENTO OUTPUT
 
 }
 
